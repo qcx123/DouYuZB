@@ -8,8 +8,19 @@
 
 import UIKit
 
+private let kTitleViewH: CGFloat = 40
+
 class DYHomeViewController: UIViewController {
 
+    // 懒加载属性
+    private lazy var pageTitleView : DYPageTitleView = {
+        let titleFrame = CGRect(x: 0, y: kNavigationBarH + kStatusBarH, width: kScreenW, height: kTitleViewH)
+        let titles = ["推荐","游戏","娱乐","趣玩"]
+        let titleView = DYPageTitleView(frame: titleFrame, titles: titles)
+        titleView.backgroundColor = UIColor.white
+        return titleView
+    }()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
@@ -25,8 +36,13 @@ class DYHomeViewController: UIViewController {
 extension DYHomeViewController {
     
     private func setupUI() {
+        // 0.不需要调整UIScrollView内边距
+        automaticallyAdjustsScrollViewInsets = false
+        
         // 1.设置导航栏
         setupNavigationBar()
+        // 2.添加titleView
+        view.addSubview(pageTitleView)
     }
     
     private func setupNavigationBar() {
