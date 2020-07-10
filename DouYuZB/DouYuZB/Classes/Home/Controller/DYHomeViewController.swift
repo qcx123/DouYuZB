@@ -21,6 +21,22 @@ class DYHomeViewController: UIViewController {
         return titleView
     }()
     
+    private lazy var pageContentView: DYPageContentView = {
+        let contentFrame = CGRect(x: 0, y: kStatusBarH + kNavigationBarH + kTitleViewH, width: kScreenW, height: kScreenH - kStatusBarH - kNavigationBarH - kTitleViewH)
+        
+        // 循环创建子控制器
+        var childVcs = [UIViewController]()
+        for _ in 0..<4 {
+            let vc = UIViewController()
+            vc.view.backgroundColor = UIColor.init(r: CGFloat(arc4random_uniform(255)), g: CGFloat(arc4random_uniform(255)), b: CGFloat(arc4random_uniform(255)))
+            childVcs.append(vc)
+        }
+        
+        let pageContentView = DYPageContentView(frame: contentFrame, childVCs: childVcs, parentViewController: self)
+        return pageContentView
+    }()
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
@@ -43,6 +59,9 @@ extension DYHomeViewController {
         setupNavigationBar()
         // 2.添加titleView
         view.addSubview(pageTitleView)
+        
+        // 3.添加contentView
+        view.addSubview(pageContentView)
     }
     
     private func setupNavigationBar() {

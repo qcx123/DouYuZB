@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		44219F3A24B6F60E0008F7B1 /* DYPageContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44219F3924B6F60E0008F7B1 /* DYPageContentView.swift */; };
+		44219F3C24B70F270008F7B1 /* UIColor+Extention.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44219F3B24B70F270008F7B1 /* UIColor+Extention.swift */; };
 		44563F7824B5BE0B00D75399 /* DYPageTitleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44563F7724B5BE0B00D75399 /* DYPageTitleView.swift */; };
 		44563F7C24B5C41400D75399 /* Common.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44563F7B24B5C41400D75399 /* Common.swift */; };
 		44DFD33D2418DDDE002F61AC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44DFD33C2418DDDE002F61AC /* AppDelegate.swift */; };
@@ -23,6 +25,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		44219F3924B6F60E0008F7B1 /* DYPageContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DYPageContentView.swift; sourceTree = "<group>"; };
+		44219F3B24B70F270008F7B1 /* UIColor+Extention.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extention.swift"; sourceTree = "<group>"; };
 		44563F7724B5BE0B00D75399 /* DYPageTitleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DYPageTitleView.swift; sourceTree = "<group>"; };
 		44563F7B24B5C41400D75399 /* Common.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Common.swift; sourceTree = "<group>"; };
 		44DFD3392418DDDE002F61AC /* DouYuZB.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DouYuZB.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -156,6 +160,7 @@
 			isa = PBXGroup;
 			children = (
 				44563F7724B5BE0B00D75399 /* DYPageTitleView.swift */,
+				44219F3924B6F60E0008F7B1 /* DYPageContentView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -268,6 +273,7 @@
 			isa = PBXGroup;
 			children = (
 				44DFD3A7241B910C002F61AC /* UIBarButton+Extention.swift */,
+				44219F3B24B70F270008F7B1 /* UIColor+Extention.swift */,
 			);
 			path = Extention;
 			sourceTree = "<group>";
@@ -349,6 +355,8 @@
 			files = (
 				44DFD33D2418DDDE002F61AC /* AppDelegate.swift in Sources */,
 				44563F7824B5BE0B00D75399 /* DYPageTitleView.swift in Sources */,
+				44219F3A24B6F60E0008F7B1 /* DYPageContentView.swift in Sources */,
+				44219F3C24B70F270008F7B1 /* UIColor+Extention.swift in Sources */,
 				44DFD33F2418DDDE002F61AC /* SceneDelegate.swift in Sources */,
 				44DFD3A5241B8B23002F61AC /* DYHomeViewController.swift in Sources */,
 				44DFD3A8241B910C002F61AC /* UIBarButton+Extention.swift in Sources */,
