@@ -8,11 +8,18 @@
 
 import UIKit
 
+protocol DYPageTitleViewDelegate: class {
+    func pageTitleView(titleView: DYPageTitleView, selectedIndex index: Int)
+}
+
 private let kScrollLineH : CGFloat = 2
 
 class DYPageTitleView: UIView {
 
+    private var currectIndex: Int = 0
     private var titles: [String]
+    
+    weak var delegate: DYPageTitleViewDelegate?
     
     private lazy var scrollLine : UIView = {
         let scrollLine = UIView()
@@ -40,6 +47,32 @@ class DYPageTitleView: UIView {
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    @objc private func titleLabelClick(tapGes: UITapGestureRecognizer) {
+        // 1.获取当前的label
+        guard let currentLabel = tapGes.view as? UILabel else {
+            return
+        }
+        
+        // 2.获取之前的label
+        let oldLabel = titleLabels[currectIndex]
+        
+        // 3.修改颜色
+        currentLabel.textColor = UIColor.orange
+        oldLabel.textColor = UIColor.gray
+        
+        // 4.保存最新label的下标
+        currectIndex = currentLabel.tag
+        
+        // 5.滚动条位置改变
+        let scrollLineX = CGFloat(currentLabel.tag) * scrollLine.frame.width
+        UIView.animate(withDuration: 0.15) {
+            self.scrollLine.frame.origin.x = scrollLineX
+        }
+        
+        // 6.代理
+        delegate?.pageTitleView(titleView: self, selectedIndex: currectIndex)
     }
     
 }
@@ -78,6 +111,11 @@ extension DYPageTitleView {
             
             addSubview(label)
             titleLabels.append(label)
+            
+            // 给label添加收拾
+            label.isUserInteractionEnabled = true
+            let tapGes = UITapGestureRecognizer(target: self, action: #selector(self.titleLabelClick(tapGes:)))
+            label.addGestureRecognizer(tapGes)
         }
     }
     
@@ -100,3 +138,5 @@ extension DYPageTitleView {
     }
     
 }
+
+

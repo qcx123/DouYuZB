@@ -14,12 +14,12 @@ class DYPageContentView: UIView {
 
     private var childVCs: [UIViewController]
     
-    private var parentViewController: UIViewController
+    private weak var parentViewController: UIViewController?
     
-    private lazy var collectionView: UICollectionView = {
+    private lazy var collectionView: UICollectionView = {[weak self] in
         // 1.创建layout
         let layout = UICollectionViewFlowLayout()
-        layout.itemSize = self.bounds.size
+        layout.itemSize = (self?.bounds.size)!
         layout.minimumLineSpacing = 0
         layout.minimumInteritemSpacing = 0
         layout.scrollDirection = .horizontal
@@ -40,7 +40,7 @@ class DYPageContentView: UIView {
     ///   - frame: frame
     ///   - childVCs: 子控制器
     ///   - parentViewController: 父控制器
-    init(frame: CGRect, childVCs: [UIViewController], parentViewController: UIViewController) {
+    init(frame: CGRect, childVCs: [UIViewController], parentViewController: UIViewController?) {
         self.childVCs = childVCs
         self.parentViewController = parentViewController
         super.init(frame: frame)
@@ -58,7 +58,7 @@ extension DYPageContentView {
     private func setupUI() {
         // 1.将所有子控制器添加到父控制器当中
         for childVC in childVCs {
-            parentViewController.addChild(childVC)
+            parentViewController?.addChild(childVC)
         }
         
         // 2.添加UICollectionView用于在cell中存放h控制器view
@@ -87,4 +87,12 @@ extension DYPageContentView: UICollectionViewDataSource {
     }
     
     
+}
+
+/// 对外暴露方法
+extension DYPageContentView {
+    func setCurrentIndex(currectIndex: Int) {
+        let offset = CGFloat(currectIndex) * collectionView.frame.width
+        collectionView.setContentOffset(CGPoint(x: offset, y: 0), animated: false)
+    }
 }

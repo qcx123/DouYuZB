@@ -13,15 +13,16 @@ private let kTitleViewH: CGFloat = 40
 class DYHomeViewController: UIViewController {
 
     // 懒加载属性
-    private lazy var pageTitleView : DYPageTitleView = {
+    private lazy var pageTitleView : DYPageTitleView = {[weak self] in
         let titleFrame = CGRect(x: 0, y: kNavigationBarH + kStatusBarH, width: kScreenW, height: kTitleViewH)
         let titles = ["推荐","游戏","娱乐","趣玩"]
         let titleView = DYPageTitleView(frame: titleFrame, titles: titles)
         titleView.backgroundColor = UIColor.white
+        titleView.delegate = self
         return titleView
     }()
     
-    private lazy var pageContentView: DYPageContentView = {
+    private lazy var pageContentView: DYPageContentView = {[weak self] in
         let contentFrame = CGRect(x: 0, y: kStatusBarH + kNavigationBarH + kTitleViewH, width: kScreenW, height: kScreenH - kStatusBarH - kNavigationBarH - kTitleViewH)
         
         // 循环创建子控制器
@@ -43,9 +44,6 @@ class DYHomeViewController: UIViewController {
         
     }
     
-
-    
-
 }
 
 /// MARK:- 设置UI
@@ -80,4 +78,11 @@ extension DYHomeViewController {
         navigationItem.rightBarButtonItems = [historyItem,searchItem,qrcodeItem]
     }
     
+}
+
+extension DYHomeViewController: DYPageTitleViewDelegate {
+    func pageTitleView(titleView: DYPageTitleView, selectedIndex index: Int) {
+        print(index)
+        pageContentView.setCurrentIndex(currectIndex: index)
+    }
 }
