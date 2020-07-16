@@ -139,4 +139,9 @@ extension DYPageTitleView {
     
 }
 
-
+/// 对外暴露的方法
+extension DYPageTitleView {
+    func setTitleWithProgress(progress: CGFloat, sourceIndex: Int, targetIndex: Int) {
+        
+    }
+}

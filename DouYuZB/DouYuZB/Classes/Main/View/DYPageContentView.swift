@@ -8,6 +8,10 @@
 
 import UIKit
 
+protocol DYPageContentViewDelegate: class {
+    func pageContentView(contentView: DYPageContentView, progress: CGFloat, sourceIndex: Int, targetIndex: Int)
+}
+
 private let contentCellId = "contentCellId"
 
 class DYPageContentView: UIView {
@@ -15,6 +19,10 @@ class DYPageContentView: UIView {
     private var childVCs: [UIViewController]
     
     private weak var parentViewController: UIViewController?
+    // collectionview偏移量
+    private var startOffsetX: CGFloat = 0
+    
+    weak var delegate: DYPageContentViewDelegate?
     
     private lazy var collectionView: UICollectionView = {[weak self] in
         // 1.创建layout
@@ -30,6 +38,7 @@ class DYPageContentView: UIView {
         collectionView.isPagingEnabled = true
         collectionView.bounces = true
         collectionView.dataSource = self
+        collectionView.delegate = self
         collectionView.register(UICollectionViewCell.self, forCellWithReuseIdentifier: contentCellId)
         
         return collectionView
@@ -87,6 +96,62 @@ extension DYPageContentView: UICollectionViewDataSource {
     }
     
     
+}
+
+extension DYPageContentView: UICollectionViewDelegate{
+    
+    func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
+        startOffsetX = scrollView.contentOffset.x
+    }
+    
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        // 1.定义获取需要的数据
+        var progress: CGFloat = 0
+        var sourceIndex: Int = 0
+        var targetIndex: Int = 0
+        
+        // 判断是左滑还是右滑
+        let currentOffsetX = scrollView.contentOffset.x
+        let scrollViewW = scrollView.bounds.width
+        
+        if currentOffsetX > startOffsetX {// 左滑
+            // 1.计算progres   floor(1.2) = 1,floor就是用来取出小数前边的整数的
+            progress = currentOffsetX / scrollViewW - floor(currentOffsetX / scrollViewW)
+            
+            // 2.计算sourceIndex
+            sourceIndex = Int(currentOffsetX / scrollViewW)
+            
+            // 3.计算targetIndex
+            targetIndex = sourceIndex + 1
+            if targetIndex >= childVCs.count {
+                targetIndex = childVCs.count - 1
+            }
+            
+            // 4.如果完全滑过去
+            if currentOffsetX - startOffsetX == scrollViewW {
+                progress = 1
+                targetIndex = sourceIndex
+            }
+            
+        }else {// 右滑
+            // 1.计算progres
+            progress = 1 - (currentOffsetX / scrollViewW - floor(currentOffsetX / scrollViewW))
+            
+            // 2.计算targetIndex
+            targetIndex = Int(currentOffsetX / scrollViewW)
+            
+            // 3.计算targetIndex
+            sourceIndex = targetIndex + 1
+            if sourceIndex >= childVCs.count {
+                sourceIndex = childVCs.count - 1
+            }
+        }
+        
+        // 3.将值传递给titleView
+        print("progress \(progress), sourceIndex \(sourceIndex), targetIndex \(targetIndex)")
+        
+        delegate?.pageContentView(contentView: self, progress: progress, sourceIndex: sourceIndex, targetIndex: targetIndex)
+    }
 }
 
 /// 对外暴露方法

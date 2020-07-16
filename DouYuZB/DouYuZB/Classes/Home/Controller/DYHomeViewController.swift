@@ -86,3 +86,9 @@ extension DYHomeViewController: DYPageTitleViewDelegate {
         pageContentView.setCurrentIndex(currectIndex: index)
     }
 }
+
+extension DYHomeViewController: DYPageContentViewDelegate {
+    func pageContentView(contentView: DYPageContentView, progress: CGFloat, sourceIndex: Int, targetIndex: Int) {
+        pageTitleView.setTitleWithProgress(progress: progress, sourceIndex: sourceIndex, targetIndex: targetIndex)
+    }
+}
