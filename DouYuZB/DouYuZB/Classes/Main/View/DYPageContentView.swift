@@ -128,6 +128,7 @@ extension DYPageContentView: UICollectionViewDelegate{
             }
             
             // 4.如果完全滑过去
+//            print("currentOffsetX = \(currentOffsetX), startOffsetX = \(startOffsetX)")
             if currentOffsetX - startOffsetX == scrollViewW {
                 progress = 1
                 targetIndex = sourceIndex
@@ -148,7 +149,7 @@ extension DYPageContentView: UICollectionViewDelegate{
         }
         
         // 3.将值传递给titleView
-        print("progress \(progress), sourceIndex \(sourceIndex), targetIndex \(targetIndex)")
+//        print("progress \(progress), sourceIndex \(sourceIndex), targetIndex \(targetIndex)")
         
         delegate?.pageContentView(contentView: self, progress: progress, sourceIndex: sourceIndex, targetIndex: targetIndex)
     }

@@ -34,6 +34,7 @@ class DYHomeViewController: UIViewController {
         }
         
         let pageContentView = DYPageContentView(frame: contentFrame, childVCs: childVcs, parentViewController: self)
+        pageContentView.delegate = self
         return pageContentView
     }()
     
