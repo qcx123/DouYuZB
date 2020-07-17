@@ -21,6 +21,8 @@ class DYPageContentView: UIView {
     private weak var parentViewController: UIViewController?
     // collectionview偏移量
     private var startOffsetX: CGFloat = 0
+    // 是否禁止滚动代理
+    private var isForbidScrollDelegate: Bool = false
     
     weak var delegate: DYPageContentViewDelegate?
     
@@ -101,10 +103,17 @@ extension DYPageContentView: UICollectionViewDataSource {
 extension DYPageContentView: UICollectionViewDelegate{
     
     func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
+        isForbidScrollDelegate = false
         startOffsetX = scrollView.contentOffset.x
     }
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        
+        // 0.判断是否是点击事件
+        if isForbidScrollDelegate {
+            return
+        }
+        
         // 1.定义获取需要的数据
         var progress: CGFloat = 0
         var sourceIndex: Int = 0
@@ -158,6 +167,11 @@ extension DYPageContentView: UICollectionViewDelegate{
 /// 对外暴露方法
 extension DYPageContentView {
     func setCurrentIndex(currectIndex: Int) {
+        
+        // 1.记录需要禁止直行代理方法
+        isForbidScrollDelegate = true
+        
+        // 2.滚到正确的位置
         let offset = CGFloat(currectIndex) * collectionView.frame.width
         collectionView.setContentOffset(CGPoint(x: offset, y: 0), animated: false)
     }

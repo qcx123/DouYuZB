@@ -151,7 +151,7 @@ extension DYPageTitleView {
         // 2.处理滑块逻辑
         let moveTotalX = targetLabel.frame.origin.x - sourceLabel.frame.origin.x
         let moveX = moveTotalX * progress
-        print("moveTotalX = \(moveTotalX) moveX = \(moveX) progress = \(progress)")
+//        print("moveTotalX = \(moveTotalX) moveX = \(moveX) progress = \(progress)")
         scrollLine.frame.origin.x = sourceLabel.frame.origin.x + moveX
         
         // 3.颜色的渐变
@@ -161,5 +161,8 @@ extension DYPageTitleView {
         sourceLabel.textColor = UIColor(r: kSelectColor.0 - colorDelta.0 * progress, g: kSelectColor.1 - colorDelta.1 * progress, b: kSelectColor.2 - colorDelta.2 * progress)
         // 3.3变化targetLabel
         targetLabel.textColor = UIColor(r: kNormalColor.0 + colorDelta.0 * progress, g: kNormalColor.1 + colorDelta.1 * progress, b: kNormalColor.2 + colorDelta.2 * progress)
+        
+        // 4.记录最新的index
+        currectIndex = targetIndex
     }
 }
