@@ -23,10 +23,11 @@ class DYHomeViewController: UIViewController {
     }()
     
     private lazy var pageContentView: DYPageContentView = {[weak self] in
-        let contentFrame = CGRect(x: 0, y: kStatusBarH + kNavigationBarH + kTitleViewH, width: kScreenW, height: kScreenH - kStatusBarH - kNavigationBarH - kTitleViewH)
+        let contentFrame = CGRect(x: 0, y: kStatusBarH + kNavigationBarH + kTitleViewH, width: kScreenW, height: kScreenH - kStatusBarH - kNavigationBarH - kTitleViewH - kTapBarH)
         
         // 循环创建子控制器
         var childVcs = [UIViewController]()
+        childVcs.append(DYRecommendViewController())
         for _ in 0..<4 {
             let vc = UIViewController()
             vc.view.backgroundColor = UIColor.init(r: CGFloat(arc4random_uniform(255)), g: CGFloat(arc4random_uniform(255)), b: CGFloat(arc4random_uniform(255)))
