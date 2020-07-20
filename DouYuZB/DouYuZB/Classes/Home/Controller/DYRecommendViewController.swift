@@ -27,11 +27,11 @@ class DYRecommendViewController: UIViewController {
         layout.sectionInset = UIEdgeInsets(top: 0, left: kItemMargin, bottom: 0, right: kItemMargin)
         
         let collectionView = UICollectionView(frame: self.view.bounds, collectionViewLayout: layout)
-        collectionView.backgroundColor = UIColor.blue
+        collectionView.backgroundColor = UIColor.white
         collectionView.dataSource = self
         collectionView.autoresizingMask = [.flexibleHeight,.flexibleWidth] // 随着父控件拉伸
-        collectionView.register(UICollectionViewCell.self, forCellWithReuseIdentifier: kNormalCellId)
-        collectionView.register(UICollectionReusableView.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: kHeaderViewId)
+        collectionView.register(UINib.init(nibName: "DYCollectionNormalCell", bundle: nil), forCellWithReuseIdentifier: kNormalCellId)
+        collectionView.register(UINib.init(nibName: "DYCollectionHeaderView", bundle: nil), forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: kHeaderViewId)
         return collectionView
     }()
     
@@ -63,14 +63,12 @@ extension DYRecommendViewController: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: kNormalCellId, for: indexPath)
-        cell.backgroundColor = UIColor.red
         return cell
     }
     
     func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
         // 取出header
         let headerView = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: kHeaderViewId, for: indexPath)
-        headerView.backgroundColor = UIColor.green
         return headerView
     }
     
