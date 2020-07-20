@@ -1,5 +1,5 @@
 //
-//  DYCollectionNormalCell.swift
+//  DYCollectionPrettyCell.swift
 //  DouYuZB
 //
 //  Created by 乔春晓 on 2020/7/20.
@@ -8,12 +8,11 @@
 
 import UIKit
 
-class DYCollectionNormalCell: UICollectionViewCell {
+class DYCollectionPrettyCell: UICollectionViewCell {
 
     override func awakeFromNib() {
         super.awakeFromNib()
-//        self.layer.cornerRadius
-//        self.layer.masksToBounds
+        // Initialization code
     }
 
 }
