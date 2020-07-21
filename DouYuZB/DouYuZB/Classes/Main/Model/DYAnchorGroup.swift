@@ -18,7 +18,7 @@ class DYAnchorGroup: NSObject {
             for dict in room_list {
                 anchors.append(DYAnchorModel(dict: dict))
             }
-            
+
         }
     }
     // 组显示的标题
@@ -26,8 +26,11 @@ class DYAnchorGroup: NSObject {
     // 组显示的图标
     @objc var icon_name: String = "home_header_phone"
     // 定义主播模型数组
-    private lazy var anchors: [DYAnchorModel] = [DYAnchorModel]()
+    lazy var anchors: [DYAnchorModel] = [DYAnchorModel]()
     
+    override init() {
+        
+    }
     
     init(dict: [String: NSObject]) {
         super.init()
@@ -39,14 +42,14 @@ class DYAnchorGroup: NSObject {
         
     }
     
-    override func setValue(_ value: Any?, forKey key: String) {
-        if key == "room_list" {
-            if let dataArray = value as? [[String: NSObject]] {
-                for dict in dataArray {
-                    anchors.append(DYAnchorModel(dict: dict))
-                }
-            }
-        }
-    }
+//    override func setValue(_ value: Any?, forKey key: String) {
+//        if key == "room_list" {
+//            if let dataArray = value as? [[String: NSObject]] {
+//                for dict in dataArray {
+//                    anchors.append(DYAnchorModel(dict: dict))
+//                }
+//            }
+//        }
+//    }
     
 }

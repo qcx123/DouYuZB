@@ -20,6 +20,8 @@ private let kHeaderViewId = "kHeaderViewId"
 
 class DYRecommendViewController: UIViewController {
 
+    private lazy var recommendVM : DYRecommendViewModel = DYRecommendViewModel()
+    
     private lazy var collectionView: UICollectionView = {[unowned self] in
         let layout = UICollectionViewFlowLayout()
         layout.itemSize = CGSize(width: kItemW, height: kNormalItemH)
@@ -57,14 +59,12 @@ extension DYRecommendViewController {
 
 extension DYRecommendViewController: UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     func numberOfSections(in collectionView: UICollectionView) -> Int {
-        return 12
+        return recommendVM.anchorGroups.count
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        if section == 0 {
-            return 8
-        }
-        return 4
+        let group = recommendVM.anchorGroups[section]
+        return group.anchors.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -79,7 +79,11 @@ extension DYRecommendViewController: UICollectionViewDataSource, UICollectionVie
     
     func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
         // 取出header
-        let headerView = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: kHeaderViewId, for: indexPath)
+        let headerView = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: kHeaderViewId, for: indexPath) as! DYCollectionHeaderView
+        
+        let group = recommendVM.anchorGroups[indexPath.section]
+        headerView.group = group
+        
         return headerView
     }
     
@@ -95,6 +99,8 @@ extension DYRecommendViewController: UICollectionViewDataSource, UICollectionVie
 
 extension DYRecommendViewController {
     private func loadData() {
-        DYRecommendViewModel().requestData()
+        recommendVM.requestData {
+            self.collectionView.reloadData()
+        }
     }
 }
