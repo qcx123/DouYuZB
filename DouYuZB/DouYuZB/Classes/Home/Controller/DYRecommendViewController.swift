@@ -43,6 +43,8 @@ class DYRecommendViewController: UIViewController {
         super.viewDidLoad()
         
         setupUI()
+        
+        loadData()
     }
     
 }
@@ -89,4 +91,10 @@ extension DYRecommendViewController: UICollectionViewDataSource, UICollectionVie
         return CGSize(width: kItemW, height: kNormalItemH)
     }
     
+}
+
+extension DYRecommendViewController {
+    private func loadData() {
+        DYRecommendViewModel().requestData()
+    }
 }
