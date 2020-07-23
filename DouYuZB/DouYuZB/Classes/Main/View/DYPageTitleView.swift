@@ -53,8 +53,15 @@ class DYPageTitleView: UIView {
     }
     
     @objc private func titleLabelClick(tapGes: UITapGestureRecognizer) {
-        // 1.获取当前的label
+        
+        
+        // 0.获取当前的label
         guard let currentLabel = tapGes.view as? UILabel else {
+            return
+        }
+        
+        // 1.点击同一个title，直接返回
+        if currentLabel.tag == currectIndex {
             return
         }
         

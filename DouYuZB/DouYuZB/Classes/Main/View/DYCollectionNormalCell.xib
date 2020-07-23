@@ -34,7 +34,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="194" height="90"/>
                         <userDefinedRuntimeAttributes>
                             <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                <integer key="value" value="5"/>
+                                <integer key="value" value="6"/>
                             </userDefinedRuntimeAttribute>
                             <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
                         </userDefinedRuntimeAttributes>
@@ -72,6 +72,12 @@
             </constraints>
             <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
             <size key="customSize" width="194" height="119"/>
+            <connections>
+                <outlet property="iconImgView" destination="Ub3-Rr-r1D" id="NZd-Dc-egM"/>
+                <outlet property="nickNameLabel" destination="9Sj-xI-pOc" id="g8E-Ml-5wE"/>
+                <outlet property="onlineBtn" destination="gVq-xT-cFy" id="lTS-pD-EDw"/>
+                <outlet property="roomNameLabel" destination="F9G-f2-OED" id="BPw-FB-yWS"/>
+            </connections>
             <point key="canvasLocation" x="227.536231884058" y="127.56696428571428"/>
         </collectionViewCell>
     </objects>

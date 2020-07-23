@@ -14,6 +14,8 @@ private let kNormalItemH = kItemW / 4 * 3
 private let kPrettyItemH = kItemW / 3 * 4
 private let kHeaderViewH: CGFloat = 50
 
+private let kCycleViewH: CGFloat = kScreenW * 3 / 8
+
 private let kNormalCellId = "kNormalCellId"
 private let kPrettyCellId = "kPrettyCellId"
 private let kHeaderViewId = "kHeaderViewId"
@@ -38,7 +40,14 @@ class DYRecommendViewController: UIViewController {
         collectionView.register(UINib.init(nibName: "DYCollectionNormalCell", bundle: nil), forCellWithReuseIdentifier: kNormalCellId)
         collectionView.register(UINib.init(nibName: "DYCollectionPrettyCell", bundle: nil), forCellWithReuseIdentifier: kPrettyCellId)
         collectionView.register(UINib.init(nibName: "DYCollectionHeaderView", bundle: nil), forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: kHeaderViewId)
+        
         return collectionView
+    }()
+    
+    private lazy var recommendCycleView: DYRecommendCycleView = {
+        let cycleView = DYRecommendCycleView.recommendCycleView()
+        cycleView.frame = CGRect(x: 0, y: -kCycleViewH, width: kScreenW, height: kCycleViewH)
+        return cycleView
     }()
     
     override func viewDidLoad() {
@@ -54,6 +63,10 @@ class DYRecommendViewController: UIViewController {
 extension DYRecommendViewController {
     private func setupUI() {
         view.addSubview(collectionView)
+        
+        collectionView.addSubview(recommendCycleView)
+        
+        collectionView.contentInset = UIEdgeInsets(top: kCycleViewH, left: 0, bottom: 0, right: 0)
     }
 }
 
@@ -68,12 +81,18 @@ extension DYRecommendViewController: UICollectionViewDataSource, UICollectionVie
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        var cell : UICollectionViewCell!
+        
+        let group = recommendVM.anchorGroups[indexPath.section]
+        let anchor = group.anchors[indexPath.item]
+        
+        let cell: DYCollectionBaseCell!
+        
         if indexPath.section == 1 {
-            cell = collectionView.dequeueReusableCell(withReuseIdentifier: kPrettyCellId, for: indexPath)
+            cell = collectionView.dequeueReusableCell(withReuseIdentifier: kPrettyCellId, for: indexPath) as! DYCollectionPrettyCell
         }else {
-            cell = collectionView.dequeueReusableCell(withReuseIdentifier: kNormalCellId, for: indexPath)
+            cell = collectionView.dequeueReusableCell(withReuseIdentifier: kNormalCellId, for: indexPath) as! DYCollectionNormalCell
         }
+        cell.anchor = anchor
         return cell
     }
     
