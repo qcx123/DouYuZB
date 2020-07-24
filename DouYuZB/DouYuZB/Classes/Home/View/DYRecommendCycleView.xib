@@ -17,7 +17,7 @@
                 <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="GZG-1j-5Lb">
                     <rect key="frame" x="0.0" y="0.0" width="442" height="150"/>
                     <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                    <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="0.0" id="v78-eo-3f4">
+                    <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="v78-eo-3f4">
                         <size key="itemSize" width="50" height="50"/>
                         <size key="headerReferenceSize" width="0.0" height="0.0"/>
                         <size key="footerReferenceSize" width="0.0" height="0.0"/>
@@ -25,10 +25,11 @@
                     </collectionViewFlowLayout>
                     <connections>
                         <outlet property="dataSource" destination="iN0-l3-epB" id="FZ7-aF-t4s"/>
+                        <outlet property="delegate" destination="iN0-l3-epB" id="2oM-AQ-LLH"/>
                     </connections>
                 </collectionView>
                 <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="UMq-P8-6RV">
-                    <rect key="frame" x="393" y="113" width="39" height="37"/>
+                    <rect key="frame" x="393" y="116" width="39" height="37"/>
                     <color key="pageIndicatorTintColor" systemColor="systemGreenColor" red="0.20392156859999999" green="0.78039215689999997" blue="0.34901960780000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <color key="currentPageIndicatorTintColor" systemColor="systemPinkColor" red="1" green="0.1764705882" blue="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                 </pageControl>
@@ -39,7 +40,7 @@
                 <constraint firstItem="c6E-aB-JfM" firstAttribute="trailing" secondItem="GZG-1j-5Lb" secondAttribute="trailing" id="Lc0-Ja-Izc"/>
                 <constraint firstItem="GZG-1j-5Lb" firstAttribute="leading" secondItem="c6E-aB-JfM" secondAttribute="leading" id="LeN-Yp-Srx"/>
                 <constraint firstAttribute="bottom" secondItem="GZG-1j-5Lb" secondAttribute="bottom" id="Mfe-A3-o95"/>
-                <constraint firstAttribute="bottom" secondItem="UMq-P8-6RV" secondAttribute="bottom" id="jMr-fS-87j"/>
+                <constraint firstAttribute="bottom" secondItem="UMq-P8-6RV" secondAttribute="bottom" constant="-3" id="jMr-fS-87j"/>
                 <constraint firstItem="GZG-1j-5Lb" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="zhm-eG-mwN"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>

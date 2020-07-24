@@ -26,6 +26,8 @@
 		44219F5B24C824F80008F7B1 /* DYRecommendCycleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44219F5A24C824F80008F7B1 /* DYRecommendCycleView.swift */; };
 		44219F5D24C8251F0008F7B1 /* DYRecommendCycleView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 44219F5C24C8251F0008F7B1 /* DYRecommendCycleView.xib */; };
 		4453E00F24CAC58300B35BBB /* DYCycleModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4453E00E24CAC58300B35BBB /* DYCycleModel.swift */; };
+		4453E01224CACCD200B35BBB /* DYCollectionCycleCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4453E01024CACCD200B35BBB /* DYCollectionCycleCell.swift */; };
+		4453E01324CACCD200B35BBB /* DYCollectionCycleCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4453E01124CACCD200B35BBB /* DYCollectionCycleCell.xib */; };
 		44563F7824B5BE0B00D75399 /* DYPageTitleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44563F7724B5BE0B00D75399 /* DYPageTitleView.swift */; };
 		44563F7C24B5C41400D75399 /* Common.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44563F7B24B5C41400D75399 /* Common.swift */; };
 		44DFD33D2418DDDE002F61AC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44DFD33C2418DDDE002F61AC /* AppDelegate.swift */; };
@@ -61,6 +63,8 @@
 		44219F5A24C824F80008F7B1 /* DYRecommendCycleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DYRecommendCycleView.swift; sourceTree = "<group>"; };
 		44219F5C24C8251F0008F7B1 /* DYRecommendCycleView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DYRecommendCycleView.xib; sourceTree = "<group>"; };
 		4453E00E24CAC58300B35BBB /* DYCycleModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DYCycleModel.swift; sourceTree = "<group>"; };
+		4453E01024CACCD200B35BBB /* DYCollectionCycleCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DYCollectionCycleCell.swift; sourceTree = "<group>"; };
+		4453E01124CACCD200B35BBB /* DYCollectionCycleCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DYCollectionCycleCell.xib; sourceTree = "<group>"; };
 		44563F7724B5BE0B00D75399 /* DYPageTitleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DYPageTitleView.swift; sourceTree = "<group>"; };
 		44563F7B24B5C41400D75399 /* Common.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Common.swift; sourceTree = "<group>"; };
 		44DFD3392418DDDE002F61AC /* DouYuZB.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DouYuZB.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -299,6 +303,8 @@
 				44219F4124C57C1E0008F7B1 /* DYCollectionHeaderView.xib */,
 				44219F5A24C824F80008F7B1 /* DYRecommendCycleView.swift */,
 				44219F5C24C8251F0008F7B1 /* DYRecommendCycleView.xib */,
+				4453E01024CACCD200B35BBB /* DYCollectionCycleCell.swift */,
+				4453E01124CACCD200B35BBB /* DYCollectionCycleCell.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -435,6 +441,7 @@
 				44219F5D24C8251F0008F7B1 /* DYRecommendCycleView.xib in Resources */,
 				44219F4724C580D20008F7B1 /* DYCollectionNormalCell.xib in Resources */,
 				44DFD3A0241B8AFD002F61AC /* Follow.storyboard in Resources */,
+				4453E01324CACCD200B35BBB /* DYCollectionCycleCell.xib in Resources */,
 				44219F4324C57C1E0008F7B1 /* DYCollectionHeaderView.xib in Resources */,
 				44219F4B24C588030008F7B1 /* DYCollectionPrettyCell.xib in Resources */,
 			);
@@ -506,6 +513,7 @@
 				44DFD3A5241B8B23002F61AC /* DYHomeViewController.swift in Sources */,
 				44DFD3A8241B910C002F61AC /* UIBarButton+Extention.swift in Sources */,
 				44219F4A24C588030008F7B1 /* DYCollectionPrettyCell.swift in Sources */,
+				4453E01224CACCD200B35BBB /* DYCollectionCycleCell.swift in Sources */,
 				44DFD38B241B8A77002F61AC /* DYMainViewController.swift in Sources */,
 				44563F7C24B5C41400D75399 /* Common.swift in Sources */,
 				44219F4224C57C1E0008F7B1 /* DYCollectionHeaderView.swift in Sources */,

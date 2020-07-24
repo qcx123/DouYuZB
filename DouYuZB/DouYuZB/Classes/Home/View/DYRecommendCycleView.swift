@@ -32,7 +32,7 @@ class DYRecommendCycleView: UIView {
         
 //        autoresizingMask = .flexibleLeftMargin
         
-        collectionView.register(UICollectionViewCell.self, forCellWithReuseIdentifier: kCycleCellId)
+        collectionView.register(UINib(nibName: "DYCollectionCycleCell", bundle: nil), forCellWithReuseIdentifier: kCycleCellId)
         
         
     }
@@ -61,10 +61,18 @@ extension DYRecommendCycleView : UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: kCycleCellId, for: indexPath)
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: kCycleCellId, for: indexPath) as! DYCollectionCycleCell
         let cycleModel = cycleModels![indexPath.item]
         
-        cell.contentView.backgroundColor = UIColor.yellow
+        cell.cycleModel = cycleModel
         return cell
+    }
+}
+
+extension DYRecommendCycleView: UICollectionViewDelegate {
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        let offsetX = scrollView.contentOffset.x + scrollView.bounds.width * 0.5
+        
+        pageControl.currentPage = Int(offsetX / scrollView.bounds.width)
     }
 }
