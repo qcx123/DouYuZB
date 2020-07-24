@@ -15,9 +15,12 @@ class DYRecommendViewModel {
     private lazy var bigDataGroup: DYAnchorGroup = DYAnchorGroup()
     
     private lazy var prettyGroup: DYAnchorGroup = DYAnchorGroup()
+    
+    lazy var cycleArray: [DYCycleModel] = [DYCycleModel]()
 }
 
 extension DYRecommendViewModel {
+    // 请求推荐数据
     func requestData(finishCallback: @escaping ()->()) {
         // 0.准备数据
         let interval = NSDate.getCurrentTime() as NSString
@@ -81,7 +84,6 @@ extension DYRecommendViewModel {
             for dict in dataArray {
                 let group = DYAnchorGroup(dict: dict)
                 self.anchorGroups.append(group)
-                print(group.tag_name)
             }
             disGroup.leave()
         }
@@ -94,4 +96,21 @@ extension DYRecommendViewModel {
             finishCallback()
         }
     }
+    
+    // 请求无限轮播数据
+    func requestCycleData(finishCallback: @escaping ()->()) {
+        NetworkTools.requestData(type: .GET, URLString: "http://www.douyutv.com/api/v1/slide/6", parameters: ["version":"2.300"]) { (result) in
+            print(result)
+            guard let jsonResult = result["data"] as? [[String: NSObject]] else {
+                return
+            }
+            for dict in jsonResult {
+                let model = DYCycleModel(dict: dict)
+                self.cycleArray.append(model)
+            }
+            
+            finishCallback()
+        }
+    }
 }
+

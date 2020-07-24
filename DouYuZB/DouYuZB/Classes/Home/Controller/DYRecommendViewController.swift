@@ -118,8 +118,13 @@ extension DYRecommendViewController: UICollectionViewDataSource, UICollectionVie
 
 extension DYRecommendViewController {
     private func loadData() {
+        // 请求推荐数据
         recommendVM.requestData {
             self.collectionView.reloadData()
+        }
+        // 请求轮播数据
+        recommendVM.requestCycleData {
+            self.recommendCycleView.cycleModels = self.recommendVM.cycleArray
         }
     }
 }

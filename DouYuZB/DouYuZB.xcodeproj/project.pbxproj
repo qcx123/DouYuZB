@@ -25,6 +25,7 @@
 		44219F5924C820C20008F7B1 /* DYCollectionBaseCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44219F5824C820C20008F7B1 /* DYCollectionBaseCell.swift */; };
 		44219F5B24C824F80008F7B1 /* DYRecommendCycleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44219F5A24C824F80008F7B1 /* DYRecommendCycleView.swift */; };
 		44219F5D24C8251F0008F7B1 /* DYRecommendCycleView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 44219F5C24C8251F0008F7B1 /* DYRecommendCycleView.xib */; };
+		4453E00F24CAC58300B35BBB /* DYCycleModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4453E00E24CAC58300B35BBB /* DYCycleModel.swift */; };
 		44563F7824B5BE0B00D75399 /* DYPageTitleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44563F7724B5BE0B00D75399 /* DYPageTitleView.swift */; };
 		44563F7C24B5C41400D75399 /* Common.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44563F7B24B5C41400D75399 /* Common.swift */; };
 		44DFD33D2418DDDE002F61AC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44DFD33C2418DDDE002F61AC /* AppDelegate.swift */; };
@@ -59,6 +60,7 @@
 		44219F5824C820C20008F7B1 /* DYCollectionBaseCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DYCollectionBaseCell.swift; sourceTree = "<group>"; };
 		44219F5A24C824F80008F7B1 /* DYRecommendCycleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DYRecommendCycleView.swift; sourceTree = "<group>"; };
 		44219F5C24C8251F0008F7B1 /* DYRecommendCycleView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DYRecommendCycleView.xib; sourceTree = "<group>"; };
+		4453E00E24CAC58300B35BBB /* DYCycleModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DYCycleModel.swift; sourceTree = "<group>"; };
 		44563F7724B5BE0B00D75399 /* DYPageTitleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DYPageTitleView.swift; sourceTree = "<group>"; };
 		44563F7B24B5C41400D75399 /* Common.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Common.swift; sourceTree = "<group>"; };
 		44DFD3392418DDDE002F61AC /* DouYuZB.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DouYuZB.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -285,6 +287,7 @@
 		44DFD390241B8A93002F61AC /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				4453E00E24CAC58300B35BBB /* DYCycleModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -493,6 +496,7 @@
 				44DFD33D2418DDDE002F61AC /* AppDelegate.swift in Sources */,
 				44563F7824B5BE0B00D75399 /* DYPageTitleView.swift in Sources */,
 				44219F3A24B6F60E0008F7B1 /* DYPageContentView.swift in Sources */,
+				4453E00F24CAC58300B35BBB /* DYCycleModel.swift in Sources */,
 				44219F3C24B70F270008F7B1 /* UIColor+Extention.swift in Sources */,
 				44219F5524C6CA3B0008F7B1 /* DYAnchorGroup.swift in Sources */,
 				44219F5924C820C20008F7B1 /* DYCollectionBaseCell.swift in Sources */,

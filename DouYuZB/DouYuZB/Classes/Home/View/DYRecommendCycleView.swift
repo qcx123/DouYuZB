@@ -12,6 +12,18 @@ private let kCycleCellId = "kCycleCellId"
 
 class DYRecommendCycleView: UIView {
 
+    var cycleModels: [DYCycleModel]? {
+        didSet {
+            guard let cycleModels = cycleModels else {
+                return
+            }
+            collectionView.reloadData()
+            
+            pageControl.numberOfPages = cycleModels.count
+        }
+    }
+    
+    
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var pageControl: UIPageControl!
     
@@ -45,11 +57,13 @@ extension DYRecommendCycleView {
 
 extension DYRecommendCycleView : UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 6
+        return cycleModels?.count ?? 0
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: kCycleCellId, for: indexPath)
+        let cycleModel = cycleModels![indexPath.item]
+        
         cell.contentView.backgroundColor = UIColor.yellow
         return cell
     }
