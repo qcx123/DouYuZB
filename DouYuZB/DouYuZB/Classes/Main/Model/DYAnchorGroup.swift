@@ -25,6 +25,8 @@ class DYAnchorGroup: NSObject {
     @objc var tag_name: String = ""
     // 组显示的图标
     @objc var icon_name: String = "home_header_phone"
+    
+    @objc var icon_url: String = ""
     // 定义主播模型数组
     lazy var anchors: [DYAnchorModel] = [DYAnchorModel]()
     

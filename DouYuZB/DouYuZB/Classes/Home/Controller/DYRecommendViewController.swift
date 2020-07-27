@@ -15,6 +15,7 @@ private let kPrettyItemH = kItemW / 3 * 4
 private let kHeaderViewH: CGFloat = 50
 
 private let kCycleViewH: CGFloat = kScreenW * 3 / 8
+private let kGameViewH: CGFloat = 90
 
 private let kNormalCellId = "kNormalCellId"
 private let kPrettyCellId = "kPrettyCellId"
@@ -46,8 +47,14 @@ class DYRecommendViewController: UIViewController {
     
     private lazy var recommendCycleView: DYRecommendCycleView = {
         let cycleView = DYRecommendCycleView.recommendCycleView()
-        cycleView.frame = CGRect(x: 0, y: -kCycleViewH, width: kScreenW, height: kCycleViewH)
+        cycleView.frame = CGRect(x: 0, y: -(kCycleViewH + kGameViewH), width: kScreenW, height: kCycleViewH)
         return cycleView
+    }()
+    
+    private lazy var gameView: DYRecommendGameView = {
+        let gameView = DYRecommendGameView.recommendGameView()
+        gameView.frame = CGRect(x: 0, y: -kGameViewH, width: kScreenW, height: kGameViewH)
+        return gameView
     }()
     
     override func viewDidLoad() {
@@ -66,7 +73,9 @@ extension DYRecommendViewController {
         
         collectionView.addSubview(recommendCycleView)
         
-        collectionView.contentInset = UIEdgeInsets(top: kCycleViewH, left: 0, bottom: 0, right: 0)
+        collectionView.contentInset = UIEdgeInsets(top: kCycleViewH + kGameViewH, left: 0, bottom: 0, right: 0)
+        
+        collectionView.addSubview(gameView)
     }
 }
 
@@ -121,6 +130,7 @@ extension DYRecommendViewController {
         // 请求推荐数据
         recommendVM.requestData {
             self.collectionView.reloadData()
+            self.gameView.groups = self.recommendVM.anchorGroups
         }
         // 请求轮播数据
         recommendVM.requestCycleData {
